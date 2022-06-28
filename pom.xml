@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>spring-boot-docker</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-boot-docker</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<skipTests>true</skipTests>
+		<java.version>11</java.version>
+		<maven.compiler.target>11</maven.compiler.target>
+    	<maven.compiler.source>11</maven.compiler.source>
+    	<start-class>com.lst.vrp.SpringBootDockerApplication</start-class>
+	</properties>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+
+			<dependency> 
+				<groupId>org.springframework.boot</groupId> 
+				<artifactId>spring-boot-starter-thymeleaf</artifactId> 
+			</dependency>
+
+			<dependency>
+			    <groupId>org.junit.jupiter</groupId>
+			    <artifactId>junit-jupiter-api</artifactId>
+			    <version>5.8.2</version>
+			    <scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+
+			<!--GRAPH HOPPER-->
+			<dependency>
+				<groupId>com.graphhopper</groupId>
+				<artifactId>graphhopper-core</artifactId>
+				<version>5.3</version>
+			</dependency>
+			<!--GEOJSON -->
+			<dependency>
+				<groupId>com.github.filosganga</groupId>
+				<artifactId>geogson-core</artifactId>
+				<version>1.2.21</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.graphhopper.external/jackson-datatype-jts -->
+			<!--https://github.com/bedatadriven/jackson-datatype-jts/-->
+			<dependency>
+				<groupId>com.graphhopper.external</groupId>
+				<artifactId>jackson-datatype-jts</artifactId>
+				<version>1.0-2.7</version>
+			</dependency>
+
+		</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.12.1</version>
+		        <executions>
+		
+		          <execution>
+		            <id>install node and npm</id>
+		            <goals>
+		              <goal>install-node-and-npm</goal>
+		            </goals>
+		            <configuration>
+		              <nodeVersion>v14.18.1</nodeVersion>
+		              <npmVersion>8.1.1</npmVersion>
+		            </configuration>
+		          </execution>
+		
+		          <execution>
+		            <id>npm install</id>
+		            <goals>
+		              <goal>npm</goal>
+		            </goals>
+		            <!-- Optional configuration which provides for running any npm command -->
+		            <configuration>
+		              <arguments>install</arguments>
+		            </configuration>
+		          </execution>
+		
+		          <execution>
+		            <id>webpack build</id>
+		            <goals>
+		              <goal>webpack</goal>
+		            </goals>
+
+		          </execution>
+		
+		        </executions>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<finalName>spring-boot-docker</finalName>
+	</build>
+
+</project>
